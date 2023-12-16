@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { FormComponent } from './form/form.component';
+import { ListComponent } from './list/list.component';
 
 @Component({
   selector: 'app-root',
+  template: `
+    <app-form></app-form>
+    <app-list></app-list>
+  `,
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [FormComponent, ListComponent]
 })
-export class AppComponent {
-  title = 'tech2people';
-}
+export class AppComponent {}
+
