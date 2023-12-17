@@ -14,5 +14,8 @@
             </mat-error>
         }
     </mat-form-field>
-    <button mat-raised-button color='primary' type='submit' [disabled]='!todoForm.valid'>Create ToDo</button>
+    <div class='form-actions'>
+        <button class='flex-button' mat-stroked-button color='primary' type='button' (click)='this.resetForm()'>Cancel</button>
+        <button class='flex-button' mat-raised-button color='primary' type='submit' [disabled]='!todoForm.valid || isButtonDisabled'>Create</button>
+    </div>
 </form>

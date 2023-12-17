@@ -29,6 +29,7 @@ import { TodoService } from '../../services/todo.service';
 
 export class FormComponent implements OnInit {
   private editingTodo: Todo | null = null;
+  public isButtonDisabled = true;
 
   constructor(
     private store: Store,
@@ -36,6 +37,10 @@ export class FormComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.todoForm.statusChanges.subscribe(status => {
+      this.isButtonDisabled = status !== 'VALID';
+    });
+
     this.todoService.currentTodoToEdit.subscribe(todo => {
       if (todo) {
         this.editingTodo = todo;
@@ -84,6 +89,7 @@ export class FormComponent implements OnInit {
         this.store.dispatch(TodoActions.addTodo({ todo: newTodo }));
       }
       this.resetForm();
+      this.isButtonDisabled = true;
     }
   }
 
@@ -95,5 +101,6 @@ export class FormComponent implements OnInit {
       this.todoForm.get(key)?.markAsUntouched();
     });
     this.editingTodo = null;
+    this.isButtonDisabled = true;
   }
 }

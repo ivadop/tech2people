@@ -30,3 +30,17 @@
 .color-white {
     color: var(--color-white) !important;
 }
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-button {
+    flex-grow: 1;
+}
+
+.flex-button:first-child {
+    flex-grow: 1;
+    margin-right: var(--space-base);
+}
