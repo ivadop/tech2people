@@ -4,7 +4,7 @@
         <mat-label>ToDo's Title</mat-label>
         <input matInput formControlName='title'>
         @if (todoForm.controls.title.errors?.['notAlphanumeric']) {
-            <mat-error>Only letters and numbers are allowed</mat-error>
+        <mat-error>Only letters and numbers are allowed</mat-error>
         }
     </mat-form-field>
     <mat-form-field appearance='fill'>
@@ -13,11 +13,13 @@
         <mat-datepicker-toggle matSuffix [for]='picker'></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
         @if (todoForm.controls.deadline.errors?.['futureDate']) {
-            <mat-error>Please choose a future date.</mat-error>
+        <mat-error>Please choose a future date.</mat-error>
         }
     </mat-form-field>
     <div class='form-actions'>
-        <button class='flex-button' mat-stroked-button color='primary' type='button' (click)='this.resetForm()'>Cancel</button>
-        <button class='flex-button' mat-raised-button color='primary' type='submit' [disabled]='!todoForm.valid || isButtonDisabled'>Save</button>
+        <button class='flex-button' mat-stroked-button color='primary' type='button'
+            (click)='this.resetForm()'>Cancel</button>
+        <button class='flex-button' mat-raised-button color='primary' type='submit'
+            [disabled]='!todoForm.valid || isButtonDisabled'>Save</button>
     </div>
 </form>

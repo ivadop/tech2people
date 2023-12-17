@@ -4,12 +4,12 @@ import { Todo } from '../interfaces/todo.model';
 
 @Injectable({ providedIn: 'root' })
 export class TodoService {
-  private editTodoSource = new BehaviorSubject<Todo | null>(null);
-  currentTodoToEdit = this.editTodoSource.asObservable();
+    private editTodoSource = new BehaviorSubject<Todo | null>(null);
+    currentTodoToEdit = this.editTodoSource.asObservable();
 
-  constructor() {}
+    constructor() { }
 
-  changeTodoToEdit(todo: Todo | null) {
-    this.editTodoSource.next(todo);
-  }
+    changeTodoToEdit(todo: Todo | null) {
+        this.editTodoSource.next(todo);
+    }
 }

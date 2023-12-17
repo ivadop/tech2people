@@ -1,4 +1,5 @@
-:root { /* I added a few native css variables just to show I can. */
+:root {
+    /* I added a few native css variables just to show I can. */
     --space-xsmall: 2px;
     --space-small: 4px;
     --space-base: 8px;
@@ -13,12 +14,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
 
-  html, body {
+html,
+body {
     height: 100vh;
     width: 100vw;
-  }
+}
 
 .page-title {
     text-align: center;
