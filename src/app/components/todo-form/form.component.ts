@@ -107,7 +107,6 @@ export class TodoFormComponent implements OnInit {
             const control = this.todoForm.get(key);
             control?.markAsPristine();
             control?.markAsUntouched();
-            control?.setErrors(null);
         });
 
         this.editingTodo = null;
