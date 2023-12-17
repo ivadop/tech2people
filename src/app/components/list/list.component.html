@@ -7,21 +7,15 @@
             <span matListItemTitle>
               {{ item.title | uppercase }}
             </span>
-            @if (isBeforeToday(item.deadline)) {
-              <span matListItemLine class='color-warn'>
-                {{ item.deadline | date:'mediumDate' }}
-              </span>
-            } @else {
-              <span matListItemLine>
-                {{ item.deadline | date:'mediumDate' }}
-              </span>
-            }
+            <span matListItemLine [ngClass]='{"color-warn": isBeforeToday(item.deadline)}'>
+              {{ item.deadline | date:'mediumDate' }}
+            </span>
           </mat-list-item>
           <span class='flex-wrapper'>
-            <button mat-icon-button color='primary' (click)='editTodo(item)' aria-label='Example icon button with a home icon'>
+            <button mat-icon-button color='primary' (click)='editTodo(item)' aria-label='Edit'>
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button color='primary' (click)='deleteTodo(item.id)' aria-label='Example icon button with a home icon'>
+            <button mat-icon-button color='primary' (click)='deleteTodo(item.id)' aria-label='Delete'>
               <mat-icon>close</mat-icon>
             </button>
           </span>
