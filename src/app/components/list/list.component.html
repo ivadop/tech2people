@@ -1,0 +1,36 @@
+<div class='comp-container'>
+    <mat-list>
+      @for (item of todos$ | async; track item.title) {
+        <div class='flex-wrapper'>
+        <mat-checkbox color='primary' [checked]='item.completed' (change)='toggleCompleted(item.id)'></mat-checkbox>
+        <mat-list-item>
+            <span matListItemTitle>
+              {{ item.title | uppercase }}
+            </span>
+            @if (isBeforeToday(item.deadline)) {
+              <span matListItemLine class='color-warn'>
+                {{ item.deadline | date:'mediumDate' }}
+              </span>
+            } @else {
+              <span matListItemLine>
+                {{ item.deadline | date:'mediumDate' }}
+              </span>
+            }
+          </mat-list-item>
+          <span class='flex-wrapper'>
+            <button mat-icon-button color='primary' (click)='editTodo(item)' aria-label='Example icon button with a home icon'>
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color='primary' (click)='deleteTodo(item.id)' aria-label='Example icon button with a home icon'>
+              <mat-icon>close</mat-icon>
+            </button>
+          </span>
+        </div>
+        @if (!$last) {
+          <mat-divider [inset]='false'></mat-divider>
+        }
+      } @empty {
+        <mat-list-item>All ToDos completed! Hooray!</mat-list-item>
+      }
+    </mat-list>
+  </div>

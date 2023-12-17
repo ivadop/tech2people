@@ -9,7 +9,7 @@ export interface State {
 }
 
 export const initialState: State = {
-  todos: [
+  todos: [ // These are just to have some mocked up in the past:
     {
       id: 'id_1702803294124',
       title: 'Not completed in the past with a very long title',
