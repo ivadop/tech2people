@@ -1,5 +1,5 @@
 <h1 class='page-title'>ToDos</h1>
-<form class='comp-container' [formGroup]='todoForm' (ngSubmit)='onSubmit()'>
+<form class='comp-container' #formDirective='ngForm' [formGroup]='todoForm' (ngSubmit)='onSubmit(formDirective)'>
     <mat-form-field appearance='fill'>
         <mat-label>ToDo's Title</mat-label>
         <input matInput formControlName='title'>
@@ -18,7 +18,7 @@
     </mat-form-field>
     <div class='form-actions'>
         <button class='flex-button' mat-stroked-button color='primary' type='button'
-            (click)='this.resetForm()'>Cancel</button>
+            (click)='resetForm()'>Cancel</button>
         <button class='flex-button' mat-raised-button color='primary' type='submit'
             [disabled]='!todoForm.valid || isButtonDisabled'>Save</button>
     </div>

@@ -59,6 +59,7 @@ export class TodoFormComponent implements OnInit {
     todoForm = new FormGroup({
         title: new FormControl('', [
             Validators.required,
+            Validators.minLength(3),
             // Validators.pattern(/^[a-zA-Z0-9 ]*$/) // Alphanumeric regex pattern
             alphanumericValidator()
         ]),
@@ -68,11 +69,11 @@ export class TodoFormComponent implements OnInit {
         ]),
     });
 
-    onSubmit() {
+    onSubmit(formDirective: any) {
         if (this.todoForm.valid) {
             const formValue = this.todoForm.value;
-            const title = formValue.title || '';
-            const deadline = formValue.deadline ? new Date(formValue.deadline) : new Date();
+            const title = formValue.title as string;
+            const deadline = new Date(formValue.deadline as string);
 
             if (this.editingTodo) { // Editing existing todo
                 const updatedTodo: Todo = {
@@ -91,17 +92,24 @@ export class TodoFormComponent implements OnInit {
                 this.store.dispatch(TodoActions.addTodo({ todo: newTodo }));
             }
             this.resetForm();
+            formDirective.resetForm();
             this.isButtonDisabled = true;
         }
     }
 
     resetForm() {
-        this.todoForm.reset();
-        Object.keys(this.todoForm.controls).forEach(key => {
-            this.todoForm.get(key)?.setErrors(null);
-            this.todoForm.get(key)?.markAsPristine();
-            this.todoForm.get(key)?.markAsUntouched();
+        this.todoForm.reset({
+            title: null,
+            deadline: null,
         });
+
+        Object.keys(this.todoForm.controls).forEach(key => {
+            const control = this.todoForm.get(key);
+            control?.markAsPristine();
+            control?.markAsUntouched();
+            control?.setErrors(null);
+        });
+
         this.editingTodo = null;
         this.isButtonDisabled = true;
     }
