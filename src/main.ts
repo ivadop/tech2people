@@ -1,12 +1,16 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { AppComponent } from './app/app.component';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { appReducer } from './app/state/reducer';
+
+import { AppComponent } from './app/app.component';
+
 import { provideStore } from '@ngrx/store';
+import { todoReducer } from './app/state/todo.reducer';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideStore({ app: appReducer }),
+    provideAnimations(),
     BrowserAnimationsModule,
+    provideStore({ app: todoReducer }),
   ]
-});
+}).catch(err => console.error(err));

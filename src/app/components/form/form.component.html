@@ -1,0 +1,18 @@
+<form class='comp-container' [formGroup]='todoForm' (ngSubmit)='onSubmit()'>
+    <mat-form-field appearance='fill'>
+        <mat-label>ToDo's Title</mat-label>
+        <input matInput formControlName='title'>
+    </mat-form-field>
+    <mat-form-field appearance='fill'>
+        <mat-label>Choose a deadline date</mat-label>
+        <input matInput [matDatepicker]='picker' formControlName='deadline'>
+        <mat-datepicker-toggle matSuffix [for]='picker'></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        @if (todoForm.controls.deadline.errors?.['futureDate']) {
+            <mat-error>
+                Please choose a future date.
+            </mat-error>
+        }
+    </mat-form-field>
+    <button mat-raised-button color='primary' type='submit' [disabled]='!todoForm.valid'>Create ToDo</button>
+</form>

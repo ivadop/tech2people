@@ -1,4 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+:root { /* I added a few native css variables just to show I can. */
+    --space-xsmall: 2px;
+    --space-small: 4px;
+    --space-base: 8px;
+    --space-large: 16px;
+    --space-xlarge: 32px;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+    --color-warn: #f44336;
+    --color-white: #ffffff;
+}
+
+.comp-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-large);
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.flex-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.color-warn {
+    color: var(--color-warn) !important;
+}
+
+.color-white {
+    color: var(--color-white) !important;
+}
