@@ -4,7 +4,7 @@
         <mat-label>ToDo's Title</mat-label>
         <input matInput formControlName='title'>
         @if (todoForm.controls.title.errors?.['notAlphanumeric']) {
-            <mat-error>Only letters and numbers are alowed</mat-error>
+            <mat-error>Only letters and numbers are allowed</mat-error>
         }
     </mat-form-field>
     <mat-form-field appearance='fill'>
