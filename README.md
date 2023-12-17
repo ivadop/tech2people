@@ -25,6 +25,6 @@ User can **delete, update (both title and deadline) and mark completed** each To
 If deadline of a created ToDo moves in the past as time goes by, date in the list is in red color.
 
 State is handled using NgRx liberary.
-(Initial state has two mocked up ToDos in the list just.)
+(Initial state has two mocked up ToDos in the list. It demonstrates cases of ToDos with deadlines that have already passed.)
 
 At some point, I realized my application lacked routing functionality, so I added a component named ```OtherComponent```. Its primary purpose is to demonstrate routing, though it currently serves no specific functional role in the application.
