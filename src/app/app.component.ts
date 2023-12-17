@@ -13,11 +13,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
   template: `
   <mat-toolbar color='primary' class='flex-wrapper'>
     <span>Tech2People ToDos</span>
-
+    <span class='spacer'></span>
     <mat-slide-toggle (change)='filterCompletedTodos($event.checked)'>
       <span class='color-white'>Show Completed</span>
     </mat-slide-toggle>
-
   </mat-toolbar>
 
   <div class='app-container'>
@@ -30,7 +29,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
       display: flex;
       flex-direction: column;
       gap: calc(3 * var(--space-xlarge));
-      padding: var(--space-xsmall);
+      padding: var(--space-base);
       padding-top: var(--space-xlarge);
     }
   `],

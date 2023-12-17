@@ -6,6 +6,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { futureDateValidator } from './future-date-validator';
+import { alphanumericValidator } from './alphanumeric-validator';
 import { Store } from '@ngrx/store';
 import * as TodoActions from '../../state/todo.actions';
 import { Todo } from '../../interfaces/todo.model';
@@ -58,7 +59,8 @@ export class FormComponent implements OnInit {
   todoForm = new FormGroup({
     title: new FormControl('', [
       Validators.required,
-      Validators.pattern(/^[a-zA-Z0-9 ]*$/) // Alphanumeric regex pattern
+      // Validators.pattern(/^[a-zA-Z0-9 ]*$/) // Alphanumeric regex pattern
+      alphanumericValidator()
     ]),
     deadline: new FormControl('', [
       Validators.required,

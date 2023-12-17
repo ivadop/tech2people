@@ -10,7 +10,7 @@ export function futureDateValidator(): ValidatorFn {
     currentDate.setHours(0, 0, 0, 0);
 
     // Check if the selected date is in the future
-    if (selectedDate > currentDate) {
+    if (selectedDate >= currentDate) {
       return null; // No error
     } else {
       return { 'futureDate': true }; // Error, date is not in the future

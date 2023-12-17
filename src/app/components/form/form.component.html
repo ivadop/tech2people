@@ -2,6 +2,9 @@
     <mat-form-field appearance='fill'>
         <mat-label>ToDo's Title</mat-label>
         <input matInput formControlName='title'>
+        @if (todoForm.controls.title.errors?.['notAlphanumeric']) {
+            <mat-error>Only letters and numbers are alowed</mat-error>
+        }
     </mat-form-field>
     <mat-form-field appearance='fill'>
         <mat-label>Choose a deadline date</mat-label>
@@ -9,9 +12,7 @@
         <mat-datepicker-toggle matSuffix [for]='picker'></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
         @if (todoForm.controls.deadline.errors?.['futureDate']) {
-            <mat-error>
-                Please choose a future date.
-            </mat-error>
+            <mat-error>Please choose a future date.</mat-error>
         }
     </mat-form-field>
     <div class='form-actions'>
