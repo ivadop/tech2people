@@ -5,6 +5,7 @@ import { Store, select } from '@ngrx/store';
 
 import { Todo } from '../../interfaces/todo.model';
 import * as TodoActions from '../../state/todo.actions';
+import { getAllTodos } from '../../state/todo.selectors';
 
 import { TodoService } from '../../services/todo.service';
 import { tap, map, startWith } from 'rxjs/operators';
@@ -29,9 +30,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatCheckboxModule]
 })
 
-export class ListComponent implements OnInit, OnChanges {
+export class TodoListComponent implements OnInit, OnChanges {
   @Input() showCompleted: boolean = false;
-  public todos$: Observable<Todo[]> = this.store.select(state => state.todos);
+  public todos$: Observable<Todo[]> = this.store.select(getAllTodos);
   private showCompletedSource = new BehaviorSubject<boolean>(false);
   private showCompleted$ = this.showCompletedSource.asObservable();
 
@@ -42,12 +43,11 @@ export class ListComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.todos$ = combineLatest([
-      // Selector should be in the separate file, but this is a very simple app.
-      this.store.pipe(select((state: any) => state.app.todos)),
+      this.store.pipe(select(getAllTodos)),
       this.showCompleted$.pipe(startWith(this.showCompleted))
     ]).pipe(
       map(([todos, showCompleted]) => {
-        return showCompleted ? todos : todos.filter((todo: Todo) => !todo.completed);
+        return todos ? (showCompleted ? todos : todos.filter((todo: Todo) => !todo.completed)) : [];
       }),
       tap(todos => console.log('Current todos:', todos))
     );

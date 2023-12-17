@@ -28,7 +28,7 @@ import { TodoService } from '../../services/todo.service';
   ]
 })
 
-export class FormComponent implements OnInit {
+export class TodoFormComponent implements OnInit {
   private editingTodo: Todo | null = null;
   public isButtonDisabled = true;
 

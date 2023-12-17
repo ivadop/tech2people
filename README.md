@@ -26,3 +26,5 @@ If deadline of a created ToDo moves in the past as time goes by, date in the lis
 
 State is handled using NgRx liberary.
 (Initial state has two mocked up ToDos in the list just.)
+
+At some point, I realized my application lacked routing functionality, so I added a component named ```OtherComponent```. Its primary purpose is to demonstrate routing, though it currently serves no specific functional role in the application.
