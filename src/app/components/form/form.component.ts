@@ -14,7 +14,7 @@ import { TodoService } from '../../services/todo.service';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css'],
+  styleUrls: [],
   standalone: true,
   imports: [
     CommonModule,

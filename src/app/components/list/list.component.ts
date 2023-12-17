@@ -83,11 +83,11 @@ export class ListComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.todos$ = combineLatest([
+      // Selector should be in the separate file, but this is a very simple app.
       this.store.pipe(select((state: any) => state.app.todos)),
       this.showCompleted$.pipe(startWith(this.showCompleted))
     ]).pipe(
       map(([todos, showCompleted]) => {
-        console.log('Filtering todos, showCompleted:', showCompleted);
         return showCompleted ? todos : todos.filter((todo: Todo) => !todo.completed);
       }),
       tap(todos => console.log('Current todos:', todos))
@@ -96,7 +96,6 @@ export class ListComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['showCompleted']) {
-      console.log('showCompleted changed:', this.showCompleted);
       this.showCompletedSource.next(this.showCompleted);
     }
   }
@@ -115,10 +114,10 @@ export class ListComponent implements OnInit, OnChanges {
 
   isBeforeToday(todoDate: Date): boolean {
     let today = new Date();
-    today.setHours(0, 0, 0, 0); // Reset today's time to 00:00:00
+    today.setHours(0, 0, 0, 0);
 
     let resetTodoDate = new Date(todoDate);
-    resetTodoDate.setHours(0, 0, 0, 0); // Reset todo date's time to 00:00:00
+    resetTodoDate.setHours(0, 0, 0, 0);
 
     return resetTodoDate < today;
   }
