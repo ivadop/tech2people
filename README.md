@@ -6,22 +6,23 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Notes and remarks
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This is a very simple app that alows user to create a ToDo list.
 
-## Build
+Todo has properties:
+```
+id: string;
+title: string
+deadline: Date
+completed: boolean
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+There are custom validators for title and deadline.
 
-## Running unit tests
+User can **delete, update (both title and deadline) and mark completed** each ToDo. There is a toggle to hide/show completed ToDos from the view. User can cancel create/update and it will reset the form.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+If deadline of a created ToDo moves in the past as time goes by, date in the list is in red color.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+State is handled using NgRx liberary.
+(Initial state has two mocked up ToDos in the list just.)
