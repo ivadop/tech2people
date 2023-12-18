@@ -12,9 +12,9 @@ import { FormsModule } from '@angular/forms';
         <div class='comp-container'>
             <div class='flex-wrapper'>
                 <a [routerLink]='["/other"]'>Link to some other page</a>
-                    <mat-slide-toggle [(ngModel)]='showCompletedTodos' (change)='filterCompletedTodos($event.checked)'>
-                <span>Show Completed</span>
-            </mat-slide-toggle>
+                <mat-slide-toggle [(ngModel)]='showCompletedTodos' (change)='filterCompletedTodos($event.checked)'>
+                    <span>Show Completed</span>
+                </mat-slide-toggle>
             </div>
             <app-form></app-form>
             <app-list [showCompleted]='showCompletedTodos'></app-list>
