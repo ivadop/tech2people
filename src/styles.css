@@ -31,7 +31,7 @@ body {
     gap: var(--space-large);
     max-width: 600px;
     margin: 0 auto;
-    padding: var(--space-large) 0;
+    padding: var(--space-large) var(--space-small);
 }
 
 .flex-wrapper {
