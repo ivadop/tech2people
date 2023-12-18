@@ -1,4 +1,4 @@
-import { Todo } from '../interfaces/todo.model';
+import { Todo } from './todo.model';
 
 export interface TodoState {
     todos: Todo[];
