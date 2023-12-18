@@ -7,7 +7,6 @@
     --space-xlarge: 32px;
 
     --color-warn: #f44336;
-    --color-white: #ffffff;
 }
 
 * {
@@ -32,6 +31,7 @@ body {
     gap: var(--space-large);
     max-width: 600px;
     margin: 0 auto;
+    padding: var(--space-large) 0;
 }
 
 .flex-wrapper {
@@ -42,10 +42,6 @@ body {
 
 .color-warn {
     color: var(--color-warn) !important;
-}
-
-.color-white {
-    color: var(--color-white) !important;
 }
 
 .form-actions {
