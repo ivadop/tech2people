@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { TodoFormComponent } from './todo-form/form.component';
 import { TodoListComponent } from './todo-list/list.component';
@@ -29,7 +29,7 @@ import { FormsModule } from '@angular/forms';
         MatSlideToggleModule,
     ]
 })
-export class TodosComponent implements OnInit {
+export class TodosComponent implements OnInit, OnDestroy {
     private showCompletedTodos$ = new BehaviorSubject<boolean>(false);
     public showCompletedTodos: boolean = false;
     private subscription: Subscription = new Subscription();
